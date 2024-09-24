@@ -1,0 +1,64 @@
+<!-- Get All Student -->
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of allStudents; track item.Id) {
+        <tr>
+            <td>{{item.Id}}</td>
+            <td>{{item.Name}}</td>
+            <td>
+                
+                <button type="button" class="btn btn-warning" (click)="show(item.Id)">show</button>
+                
+            </td>
+        </tr>
+    }@empty {
+        <tr>
+            <td [colSpan]="n"> No Student Found</td>
+        </tr>
+    }
+    </tbody>
+ </table>
+
+ 
+ <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <strong>Student Details!</strong> 
+    {{studentDetails().Id}} || {{studentDetails().Name}} || {{studentDetails().Address}} || {{studentDetails().Age}}
+ </div>
+ 
+ <br>
+
+<script>
+    var alertList = document.querySelectorAll(".alert");
+    alertList.forEach(function (alert) {
+        new bootstrap.Alert(alert);
+    });
+</script>
+
+ 
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <strong>Add New Student</strong>
+ </div>
+ 
+ <br>
+ Id <input type="number" [(ngModel)]="newStudent.Id">
+ <br><br>
+ Name <input type="text" [(ngModel)]="newStudent.Name"/>
+ <br><br>
+ Age  : <input type="number" [(ngModel)]="newStudent.Age"/>
+ <br><br>
+ Address :<input type="text" [(ngModel)]="newStudent.Address"/>
+ <br><br>
+ DeptNumber : <input type="number" [(ngModel)]="newStudent.DeptNo"/>
+ <br><br>
+ <button type="button" class="btn btn-primary" (click)="Add()">button</button>
+ 
+ 
